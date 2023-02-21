@@ -46,10 +46,10 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
-      - "80:80/tcp"
+      - "8080:80/tcp"
     environment:
       TZ: 'America/Argentina/Buenos_Aires'
-      # WEBPASSWORD: 'set a secure password here or it will be random'
+      WEBPASSWORD: 'PoneUnPass!' # 'set a secure password here or it will be random'
     # Volumes store your data between container upgrades
     volumes:
       - './etc-pihole:/etc/pihole'
@@ -59,3 +59,6 @@ services:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
 ```
+
+> Cambia la WEBPASSWORD por algo coherente, o lo dejas así y genera una random,
+> visible desde los logs.
