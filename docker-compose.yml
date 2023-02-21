@@ -1,44 +1,8 @@
-# Configuración para la Raspi
-
-## Bootstrap
-
-Actualización general
-
-```sh
-sudo apt update
-sudo apt upgrade -y
-sudo reboot
-```
-
-## Docker
-
-Instalar `Docker` desde el repo
-
-```sh
-curl -sSL https://get.docker.com | sh
-```
-
-Asignar el usuario `docker` y los permisos
-
-```sh
-sudo usermod -aG docker $USER
-
-# reboot o desconectate y volve a conectar para recargar los grupos.
-sudo reboot
-# exit
-```
-
-## Creando el `docker-compose`
-
-Primero instalo (`pi-hole`)[https://github.com/pi-hole/docker-pi-hole] como primer
-servicio. (Ver archivo `docker-compose.yml`)
-
-```yaml
 version: "3"
 
-# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
 services:
   pihole:
+    # More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
     container_name: pihole
     image: pihole/pihole:latest
     # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
@@ -58,4 +22,3 @@ services:
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
-```
