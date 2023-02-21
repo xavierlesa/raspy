@@ -30,7 +30,7 @@ sudo reboot
 
 ## Creando el `docker-compose`
 
-Primero instalo (`pi-hole`)[https://github.com/pi-hole/docker-pi-hole] como primer
+Primero instalo [`pi-hole`](https://github.com/pi-hole/docker-pi-hole) como primer
 servicio. (Ver archivo `docker-compose.yml`)
 
 ```yaml
